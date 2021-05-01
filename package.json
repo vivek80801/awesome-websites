@@ -1,0 +1,32 @@
+{
+  "name": "awesome-websites",
+  "version": "1.0.0",
+  "description": "This repo awesome websites create by awesome contributors.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivek80801/awesome-websites.git"
+  },
+  "keywords": [
+    "awesome-website",
+    "awesome",
+    "website",
+    "websites",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "vivek80801",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/vivek80801/awesome-websites/issues"
+  },
+  "homepage": "https://github.com/vivek80801/awesome-websites#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "prettier": "^2.2.1"
+  }
+}
