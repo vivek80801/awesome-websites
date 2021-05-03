@@ -9,5 +9,8 @@
         "sourceType": "module"
     },
     "rules": {
+        "no-undef":"warn",
+        "semi":"error",
+        "quotes":["error", "double"]
     }
 }
