@@ -1,7 +1,9 @@
-# awesome-websites
+# Awesome-websites
 
-This is collection of awsome website created by our contributors.
+This is a beig
 
-## want to contribute
+## Want to contribute
 
-If you want to contribute to this project please read CODE_OF_CONDUCT.md and CONTRIBUTING.md
+Raise an [issue](https://github.com/vivek80801/awesome-websites/issues).
+if [issue](https://github.com/vivek80801/awesome-websites/issues) already exits please comment before working on your project like "you are working on this issue" and read [CODE_OF_CONDUCT.md](https://github.com/vivek80801/awesome-websites/blob/main/CODE_OF_CONDUCT.md) and [CONTRIBUTING.md](https://github.com/vivek80801/awesome-websites/blob/main/CONTRIBUTING.md)
+
