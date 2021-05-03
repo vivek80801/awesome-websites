@@ -2,9 +2,9 @@
   "name": "awesome-websites",
   "version": "1.0.0",
   "description": "This repo awesome websites create by awesome contributors.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,12 @@
   "homepage": "https://github.com/vivek80801/awesome-websites#readme",
   "devDependencies": {
     "eslint": "^7.25.0",
-    "prettier": "^2.2.1"
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
