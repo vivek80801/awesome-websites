@@ -23,4 +23,4 @@ you will [nodejs](https://nodejs.org) and git installed on your machine.
     ```
 Go to [localhost](http://localhost:5000) in your browser.
 create a folder for your website under "Websites" folder. create "index.html" into your folder.
-Now, go to http://localhost:5000/<your folder name>
+Now, go to http://localhost:5000/"name of your folder"

@@ -1,6 +1,6 @@
 # Awesome-websites
 
-This is a beig
+If you know `HTML`. Welcome, you can contribute to this project. This is collection of awesome websites create by awesome people like you. 
 
 ## Want to contribute
 
