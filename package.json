@@ -4,6 +4,7 @@
   "description": "This repo awesome websites create by awesome contributors.",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "dev": "nodemon server.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -31,7 +32,8 @@
   "devDependencies": {
     "eslint": "^7.25.0",
     "nodemon": "^2.0.7",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "webpack": "^5.36.2"
   },
   "dependencies": {
     "express": "^4.17.1"
