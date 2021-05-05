@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gradient generator</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      #result {
+        height: 90vh;
+        width: 90vw;
+      }
+      h1 {
+        text-align: center;
+        text-transform: capitalize;
+      }
+      button,
+      input,
+      select {
+        text-transform: capitalize;
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        background-color: #00f;
+        color: #fff;
+        margin: 0.75rem;
+        border: none;
+        outline: none;
+      }
+      button:hover {
+        background-color: rgb(58, 138, 204);
+      }
+      #source-code {
+        padding: 0.75rem;
+        font-weight: bold;
+      }
+      #mess {
+        color: #f00;
+      }
+      ::placeholder {
+        color: #fff;
+      }
+      #hidden {
+        display: none;
+        text-transform: none;
+      }
+      #copy {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>gradient generator</h1>
+    <span id="mess"></span>
+    <div id="colors">
+      <input type="color" name="color1" value="#0000ff" id="color1" />
+      <input
+        type="number"
+        min="1"
+        value="1"
+        name="size"
+        id="size1"
+        placeholder="enter size"
+      />
+      <input type="color" name="color2" value="#ff0000" id="color2" />
+      <input
+        type="number"
+        min="1"
+        value="1"
+        name="size"
+        id="size2"
+        placeholder="enter size"
+      />
+    </div>
+    <button id="addColor">add color</button>
+    <button id="removeColor">remove color</button>
+    <input
+      type="number"
+      name="degree"
+      min="0"
+      value="0"
+      max="360"
+      id="degree"
+      placeholder="enter degree"
+    />
+
+    <select name="screen-units" id="units">
+      <option value="rem">rem</option>
+      <option value="em">em</option>
+      <option value="px">px</option>
+      <option value="vh">vh</option>
+      <option value="vw">vw</option>
+      <option value="%">percentage</option>
+    </select>
+    <select id="gradient" name="gradient-options">
+      <option value="linear-gradient">linear-gradient</option>
+      <option value="repeating-linear-gradient">
+        repeating-linear-gradient
+      </option>
+      <option value="radial-gradient">radial-gradient</option>
+      <option value="repeating-radial-gradient">
+        repeating-radial-gradient
+      </option>
+    </select>
+    <button id="btn">generate gradient</button>
+    <div id="result"></div>
+    <div id="source-code"></div>
+    <input type="text" id="hidden" />
+    <button id="copy">copy</button>
+
+    <script>
+      const colors = document.getElementById("colors");
+      const degree = document.getElementById("degree");
+      const addColor = document.getElementById("addColor");
+      const removeColor = document.getElementById("removeColor");
+      const btn = document.getElementById("btn");
+      const result = document.getElementById("result");
+      const gradientSelect = document.getElementById("gradient");
+      const sourceCode = document.getElementById("source-code");
+      const mess = document.getElementById("mess");
+      const units = document.getElementById("units");
+      const copyBtn = document.getElementById("copy");
+      const hidden = document.getElementById("hidden");
+      const colorsArray = ["color1", "color2"];
+      const sizeArray = ["size1", "size2"];
+      let option = "linear-gradient";
+      let timer;
+
+      gradientSelect.addEventListener("change", () => {
+        option = gradientSelect.value;
+      });
+
+      addColor.addEventListener("click", () => {
+        const colorInput = document.createElement("input");
+        const sizeInput = document.createElement("input");
+        colorInput.setAttribute("type", "color");
+        colorInput.setAttribute("id", `color${colorsArray.length + 1}`);
+        colorsArray.push(`color${colorsArray.length + 1}`);
+        sizeInput.setAttribute("type", "number");
+        sizeInput.setAttribute("id", `size${sizeArray.length + 1}`);
+        sizeInput.setAttribute("min", "0");
+        sizeInput.setAttribute("value", "1");
+        sizeArray.push(`size${sizeArray.length + 1}`);
+        colors.appendChild(colorInput);
+        colors.appendChild(sizeInput);
+      });
+
+      btn.addEventListener("click", () => {
+        let colorValues = "";
+        const gradient =
+          option === "radial-gradient" || option === "repeating-radial-gradient"
+            ? `${option}(`
+            : `${option}(${+degree.value}deg,`;
+        colorsArray.map((color, i) => {
+          const col = document.getElementById(color);
+          const size = document.getElementById(sizeArray[i]);
+          if (i < colorsArray.length - 1) {
+            colorValues += `${col.value} ${size.value}${units.value}, `;
+          } else {
+            colorValues += `${col.value} ${size.value}${units.value}`;
+          }
+        });
+        result.style.background = `${gradient} ${colorValues})`;
+        sourceCode.innerText = `background: ${gradient} ${colorValues});`;
+        hidden.value = `background: ${gradient} ${colorValues});`;
+        copyBtn.style.display = "block";
+        hidden.style.display = "block";
+      });
+
+      removeColor.addEventListener("click", () => {
+        const col = document.getElementById(
+          colorsArray[colorsArray.length - 1]
+        );
+        const lastSize = document.getElementById(
+          sizeArray[sizeArray.length - 1]
+        );
+        if (colorsArray.length > 2) {
+          colors.removeChild(col);
+          colors.removeChild(lastSize);
+          colorsArray.pop();
+          sizeArray.pop();
+        } else {
+          mess.innerText = "Atleast two color is needed to generate gradient";
+          timer = setTimeout(() => {
+            mess.innerText = "";
+          }, 5000);
+        }
+      });
+
+      copyBtn.addEventListener("click", () => {
+        hidden.select();
+        hidden.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+      });
+    </script>
+  </body>
+</html>
