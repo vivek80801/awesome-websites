@@ -1,6 +1,6 @@
 # Awesome-websites
 
-If you know `HTML`. Welcome, you can contribute to this project. This is collection of awesome websites create by awesome people like you. 
+This is great place to start learning open source. If you know `HTML`. Welcome, you can contribute to this project. This is collection of awesome websites create by awesome people like you. Server is setup for you.
 
 ## Want to contribute
 
