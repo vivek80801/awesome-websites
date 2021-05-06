@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="generator, gradient">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="This is gradient generator">
+    <meta name="author" content="vivek80801">
     <title>gradient generator</title>
     <style>
       body {
@@ -104,11 +108,11 @@
         repeating-radial-gradient
       </option>
     </select>
-    <button id="btn">generate gradient</button>
+    <button id="btn" title="generate gradient">generate gradient</button>
     <div id="result"></div>
     <div id="source-code"></div>
-    <input type="text" id="hidden" />
-    <button id="copy">copy</button>
+    <span id="copy-message"></span>
+    <button id="copy" title="copy">copy</button>
 
     <script>
       const colors = document.getElementById("colors");
@@ -122,10 +126,11 @@
       const mess = document.getElementById("mess");
       const units = document.getElementById("units");
       const copyBtn = document.getElementById("copy");
-      const hidden = document.getElementById("hidden");
+      const copyMessage = document.getElementById("copy-message")
       const colorsArray = ["color1", "color2"];
       const sizeArray = ["size1", "size2"];
       let option = "linear-gradient";
+      let newGradient;
       let timer;
 
       gradientSelect.addEventListener("change", () => {
@@ -164,9 +169,8 @@
         });
         result.style.background = `${gradient} ${colorValues})`;
         sourceCode.innerText = `background: ${gradient} ${colorValues});`;
-        hidden.value = `background: ${gradient} ${colorValues});`;
+        newGradient = `background: ${gradient} ${colorValues});`;
         copyBtn.style.display = "block";
-        hidden.style.display = "block";
       });
 
       removeColor.addEventListener("click", () => {
@@ -190,9 +194,11 @@
       });
 
       copyBtn.addEventListener("click", () => {
-        hidden.select();
-        hidden.setSelectionRange(0, 99999);
-        document.execCommand("copy");
+        copyMessage.innerText ="copied"
+        navigator.clipboard.writeText(newGradient)
+        setTimeout(() => {
+          copyMessage.innerText =""
+        }, 5000)
       });
     </script>
   </body>
